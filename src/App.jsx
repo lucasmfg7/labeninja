@@ -1,29 +1,38 @@
 import React, { useState } from "react";
-import { Header } from "./components/Header";
+import { Header } from "./components";
+import { CartPage, CreateService, HomePage, ServiceListPage } from "./pages";
 import { GlobalStyle } from "./styles/global";
 
 const App = () => {
-  const [currentScreen, setCurrentScreen] = useState("home");
+  const [currentScreen, setCurrentScreen] = useState("list");
+
+  function goToHomePage() {
+    setCurrentScreen("home");
+  }
+
+  function goToCartPage() {
+    setCurrentScreen("cart");
+  }
 
   function selectPage() {
     switch (currentScreen) {
       case "home":
-        return;
+        return <HomePage />;
       case "list":
-        return;
+        return <ServiceListPage />;
       case "create":
-        return;
+        return <CreateService />;
       case "cart":
-        return;
+        return <CartPage />;
       default:
-        return;
+        return <HomePage />;
     }
   }
 
   return (
     <>
-      <Header />
-      App
+      <Header goToHomePage={goToHomePage} goToCartPage={goToCartPage} />
+      {selectPage()}
       <GlobalStyle />
     </>
   );

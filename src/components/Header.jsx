@@ -33,14 +33,16 @@ const Container = styled.div`
   }
 `;
 
-export const Header = () => {
+export const Header = ({ goToHomePage, goToCartPage }) => {
   return (
     <Container>
       <h1>
-        <a href="#">LabeNinjas</a>
+        <a href="#" onClick={goToHomePage}>
+          LabeNinjas
+        </a>
       </h1>
       <div>
-        <button>Carrinho</button>
+        <button onClick={goToCartPage}>Carrinho</button>
       </div>
     </Container>
   );
