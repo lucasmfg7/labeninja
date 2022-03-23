@@ -14,10 +14,23 @@ const App = () => {
     setCurrentScreen("cart");
   }
 
+  function goToServiceListPage() {
+    setCurrentScreen("list");
+  }
+
+  function goToCreateServicePage() {
+    setCurrentScreen("create");
+  }
+
   function selectPage() {
     switch (currentScreen) {
       case "home":
-        return <HomePage />;
+        return (
+          <HomePage
+            goToCreateServicePage={goToCreateServicePage}
+            goToServiceListPage={goToServiceListPage}
+          />
+        );
       case "list":
         return <ServiceListPage />;
       case "create":
