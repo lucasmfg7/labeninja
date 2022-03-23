@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import styled from "styled-components";
 import { lighten } from "polished";
+import { api } from "../services/api";
 
 const Container = styled.div`
   display: flex;
@@ -63,17 +64,32 @@ const Content = styled.form`
   }
 `;
 
-export const CreateService = () => {
+export const CreateService = ({ setCurrentScreen }) => {
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
-  const [price, setPrice] = useState("");
+  const [price, setPrice] = useState(0);
   const [paymentMethods, setPaymentMethods] = useState([]);
   const [dueDate, setDueDate] = useState("");
 
   function createService(e) {
     e.preventDefault();
-    const service = { title, description, price, paymentMethods, dueDate };
-    console.log(service);
+
+    const body = {
+      title,
+      description,
+      price: Number(price),
+      paymentMethods,
+      dueDate,
+    };
+
+    api.post("/jobs", body);
+
+    setTitle("");
+    setDescription("");
+    setPrice("");
+    setPaymentMethods([]);
+    setDueDate("");
+    setCurrentScreen("home");
   }
 
   return (
@@ -95,7 +111,7 @@ export const CreateService = () => {
         <input
           value={price}
           onChange={(e) => setPrice(e.target.value)}
-          type="text"
+          type="number"
           placeholder="Preço"
         />
         <select

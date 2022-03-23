@@ -4,7 +4,7 @@ import { CartPage, CreateService, HomePage, ServiceListPage } from "./pages";
 import { GlobalStyle } from "./styles/global";
 
 const App = () => {
-  const [currentScreen, setCurrentScreen] = useState("list");
+  const [currentScreen, setCurrentScreen] = useState("home");
 
   function goToHomePage() {
     setCurrentScreen("home");
@@ -34,7 +34,7 @@ const App = () => {
       case "list":
         return <ServiceListPage />;
       case "create":
-        return <CreateService />;
+        return <CreateService setCurrentScreen={setCurrentScreen} />;
       case "cart":
         return <CartPage />;
       default:
