@@ -38,7 +38,12 @@ const App = () => {
       case "cart":
         return <CartPage />;
       default:
-        return <HomePage />;
+        return (
+          <HomePage
+            goToCreateServicePage={goToCreateServicePage}
+            goToServiceListPage={goToServiceListPage}
+          />
+        );
     }
   }
 
