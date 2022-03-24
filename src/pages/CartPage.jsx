@@ -40,6 +40,13 @@ const ButtonContainer = styled.div`
 `;
 
 export const CartPage = ({ goToServiceListPage, cart, removeFromCart }) => {
+  const servicesPrices = cart
+    .map((service) => service.price)
+    .reduce((acc, number) => {
+      return acc + number;
+    }, 0);
+
+  console.log(servicesPrices);
   return (
     <Container>
       {cart.length > 0 ? (
@@ -53,7 +60,13 @@ export const CartPage = ({ goToServiceListPage, cart, removeFromCart }) => {
       ) : (
         <p>Carrinho Vazio</p>
       )}
-      <h4>Total: R$100.00</h4>
+      <h4>
+        {`Total: ${new Intl.NumberFormat("pt-BR", {
+          style: "currency",
+          currency: "BRL",
+        }).format(servicesPrices)}
+        `}
+      </h4>
       <ButtonContainer>
         <button>Finalizar</button>
         <button onClick={goToServiceListPage}>Voltar</button>
