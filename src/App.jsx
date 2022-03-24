@@ -1,10 +1,22 @@
 import React, { useState } from "react";
 import { Header } from "./components";
-import { CartPage, CreateService, HomePage, ServiceListPage } from "./pages";
+import {
+  CartPage,
+  CreateService,
+  DetailsPage,
+  HomePage,
+  ServiceListPage,
+} from "./pages";
 import { GlobalStyle } from "./styles/global";
 
 const App = () => {
   const [currentScreen, setCurrentScreen] = useState("home");
+  const [jobDetailId, setJobDetailId] = useState("");
+
+  function goToDetailPage(jobId) {
+    setCurrentScreen("details");
+    setJobDetailId(jobId);
+  }
 
   function goToHomePage() {
     setCurrentScreen("home");
@@ -32,11 +44,18 @@ const App = () => {
           />
         );
       case "list":
-        return <ServiceListPage />;
+        return <ServiceListPage goToDetailPage={goToDetailPage} />;
       case "create":
         return <CreateService setCurrentScreen={setCurrentScreen} />;
       case "cart":
         return <CartPage />;
+      case "details":
+        return (
+          <DetailsPage
+            jobId={jobDetailId}
+            goToServiceListPage={goToServiceListPage}
+          />
+        );
       default:
         return (
           <HomePage

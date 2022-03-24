@@ -9,6 +9,10 @@ const Container = styled.div`
   flex-direction: column;
   height: calc(100vh - 80px);
   padding: 1rem;
+
+  h2 {
+    color: var(--purple);
+  }
 `;
 
 const GridContainer = styled.div`
@@ -18,20 +22,23 @@ const GridContainer = styled.div`
   gap: 1rem;
 `;
 
-export const ServiceListPage = () => {
+export const ServiceListPage = ({ goToDetailPage }) => {
   const [serviceList, setServiceList] = useState([]);
 
   useEffect(() => {
     api.get("/jobs").then(({ data }) => setServiceList(data.jobs));
   }, []);
 
-  console.log(serviceList);
-
   return (
     <Container>
+      <h2>Lista de Serviços</h2>
       <GridContainer>
         {serviceList.map((service) => (
-          <ServiceCard key={service.id} service={service} />
+          <ServiceCard
+            key={service.id}
+            service={service}
+            goToDetailPage={goToDetailPage}
+          />
         ))}
       </GridContainer>
     </Container>

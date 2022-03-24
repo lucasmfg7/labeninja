@@ -37,8 +37,8 @@ const ButtonContainer = styled.div`
   }
 `;
 
-export const ServiceCard = ({ service }) => {
-  const { title, price, dueDate } = service;
+export const ServiceCard = ({ service, goToDetailPage }) => {
+  const { title, price, dueDate, id } = service;
 
   return (
     <Container>
@@ -55,7 +55,7 @@ export const ServiceCard = ({ service }) => {
         {new Intl.DateTimeFormat("pt-BR").format(new Date(dueDate))}
       </p>
       <ButtonContainer>
-        <button>Detalhes</button>
+        <button onClick={() => goToDetailPage(id)}>Detalhes</button>
         <button>Adicionar</button>
       </ButtonContainer>
     </Container>
