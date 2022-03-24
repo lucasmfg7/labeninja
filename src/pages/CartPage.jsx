@@ -51,7 +51,6 @@ export const CartPage = ({
       return acc + number;
     }, 0);
 
-  console.log(servicesPrices);
   return (
     <Container>
       {cart.length > 0 ? (

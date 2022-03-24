@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import styled from "styled-components";
 import { api } from "../services/api";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const Container = styled.div`
   display: flex;
@@ -86,6 +88,16 @@ export const CreateService = ({ setCurrentScreen }) => {
     setPrice("");
     setPaymentMethods([]);
     setDueDate("");
+
+    toast.success("Serviço cadastrado com sucesso.", {
+      position: "top-right",
+      autoClose: 3000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      draggable: true,
+      progress: undefined,
+    });
+
     setCurrentScreen("home");
   }
 

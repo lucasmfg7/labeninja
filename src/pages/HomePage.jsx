@@ -1,7 +1,6 @@
 import React from "react";
 import styled from "styled-components";
 import ninjaImg from "../assets/labeninjas.png";
-import { lighten } from "polished";
 
 const Container = styled.div`
   display: flex;

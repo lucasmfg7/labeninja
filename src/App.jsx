@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import { Header } from "./components";
 import {
   CartPage,
@@ -17,13 +19,25 @@ const App = () => {
   function addToCart(service) {
     const serviceAlreadyExists = cart.some((job) => job === service);
     if (serviceAlreadyExists) {
-      alert(
-        "O serviço já foi adicionado ao carrinho. Por favor, escolha outro."
-      );
+      toast.warning("O serviço já foi adicionado ao carrinho.", {
+        position: "top-right",
+        autoClose: 3000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        draggable: true,
+        progress: undefined,
+      });
       return;
     }
     setCart([...cart, service]);
-    alert(`O serviço ${service.title} foi adicionado ao carrinho.`);
+    toast.success(`O serviço ${service.title} foi adicionado ao carrinho.`, {
+      position: "top-left",
+      autoClose: 3000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      draggable: true,
+      progress: undefined,
+    });
   }
 
   function removeFromCart(id) {
@@ -33,7 +47,14 @@ const App = () => {
 
   function clearCart() {
     setCart([]);
-    alert("Obrigado por comprar conosco.");
+    toast.success(`Obrigado por comprar conosco.`, {
+      position: "top-right",
+      autoClose: 3000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      draggable: true,
+      progress: undefined,
+    });
     goToHomePage();
   }
 
@@ -106,6 +127,7 @@ const App = () => {
     <>
       <Header goToHomePage={goToHomePage} goToCartPage={goToCartPage} />
       {selectPage()}
+      <ToastContainer />
       <GlobalStyle />
     </>
   );
