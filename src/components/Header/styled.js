@@ -1,7 +1,6 @@
-import React from "react";
 import styled from "styled-components";
 
-const Container = styled.div`
+export const Container = styled.div`
   background: var(--purple);
   padding: 1rem 2rem;
   display: flex;
@@ -32,18 +31,3 @@ const Container = styled.div`
     }
   }
 `;
-
-export const Header = ({ goToHomePage, goToCartPage }) => {
-  return (
-    <Container>
-      <h1>
-        <a href="#" onClick={goToHomePage}>
-          LabeNinjas
-        </a>
-      </h1>
-      <div>
-        <button onClick={goToCartPage}>Carrinho</button>
-      </div>
-    </Container>
-  );
-};

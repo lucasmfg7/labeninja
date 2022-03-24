@@ -1,7 +1,6 @@
-import React from "react";
 import styled from "styled-components";
 
-const Card = styled.div`
+export const Card = styled.div`
   align-items: center;
   border: 1px solid var(--purple);
   border-radius: 0.25rem;
@@ -35,18 +34,3 @@ const Card = styled.div`
     }
   }
 `;
-
-export const CartCard = ({ service, removeFromCart }) => {
-  return (
-    <Card>
-      <h3>{service.title}</h3>
-      <p>
-        {new Intl.NumberFormat("pt-BR", {
-          style: "currency",
-          currency: "BRL",
-        }).format(service.price)}
-      </p>
-      <button onClick={() => removeFromCart(service.id)}>Remover</button>
-    </Card>
-  );
-};

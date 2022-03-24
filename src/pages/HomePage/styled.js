@@ -1,8 +1,6 @@
-import React from "react";
 import styled from "styled-components";
-import ninjaImg from "../assets/labeninjas.png";
 
-const Container = styled.div`
+export const Container = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
@@ -16,7 +14,7 @@ const Container = styled.div`
   }
 `;
 
-const ButtonContainer = styled.div`
+export const ButtonContainer = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
@@ -39,15 +37,3 @@ const ButtonContainer = styled.div`
     }
   }
 `;
-
-export const HomePage = ({ goToCreateServicePage, goToServiceListPage }) => {
-  return (
-    <Container>
-      <img src={ninjaImg} alt="" />
-      <ButtonContainer>
-        <button onClick={goToCreateServicePage}>Cadastrar Serviço</button>
-        <button onClick={goToServiceListPage}>Lista de Serviços</button>
-      </ButtonContainer>
-    </Container>
-  );
-};
