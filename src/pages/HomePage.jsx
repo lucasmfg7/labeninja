@@ -15,10 +15,16 @@ const Container = styled.div`
     width: 100%;
     max-width: 350px;
   }
+`;
+
+const ButtonContainer = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
 
   button {
-    margin-right: 1rem;
-    border: 0;
+    border: 1px solid var(--purple);
     padding: 0.75rem 1rem;
     border-radius: 0.25rem;
     background: var(--purple);
@@ -28,8 +34,9 @@ const Container = styled.div`
     transition: border 0.2s, background-color 0.2s, color 0.2s;
 
     &:hover {
-      background-color: ${lighten(0.1, "#7867BF")};
-      color: var(--background);
+      border: 1px solid var(--purple);
+      background-color: var(--background);
+      color: var(--purple);
     }
   }
 `;
@@ -38,10 +45,10 @@ export const HomePage = ({ goToCreateServicePage, goToServiceListPage }) => {
   return (
     <Container>
       <img src={ninjaImg} alt="" />
-      <div>
+      <ButtonContainer>
         <button onClick={goToCreateServicePage}>Cadastrar Serviço</button>
         <button onClick={goToServiceListPage}>Lista de Serviços</button>
-      </div>
+      </ButtonContainer>
     </Container>
   );
 };
