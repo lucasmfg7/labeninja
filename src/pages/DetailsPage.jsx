@@ -31,11 +31,19 @@ const DetailsContainer = styled.div`
   padding: 1rem 2rem;
   border-radius: 0.25rem;
   border: 1px solid var(--purple);
-  color: var(--black);
+  background-color: var(--purple);
+  color: var(--background);
   margin-bottom: 1rem;
+  max-width: 430px;
 
   h2 {
     text-align: center;
+  }
+
+  li {
+    text-align: center;
+    list-style: none;
+    font-weight: 600;
   }
 `;
 
