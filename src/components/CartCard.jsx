@@ -12,6 +12,13 @@ const Card = styled.div`
   display: flex;
   justify-content: space-between;
 
+  @media (max-width: 400px) {
+    width: 350px;
+    flex-direction: column;
+    gap: 10px;
+    padding: 1rem;
+  }
+
   button {
     border: 1px solid var(--background);
     padding: 0.5rem 0.75rem;

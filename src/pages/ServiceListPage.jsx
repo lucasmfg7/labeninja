@@ -20,6 +20,10 @@ const GridContainer = styled.div`
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 1rem;
+
+  @media (max-width: 400px) {
+    grid-template-columns: 1fr;
+  }
 `;
 
 export const ServiceListPage = ({ goToDetailPage, addToCart }) => {

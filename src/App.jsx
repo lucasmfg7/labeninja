@@ -19,7 +19,7 @@ const App = () => {
   function addToCart(service) {
     const serviceAlreadyExists = cart.some((job) => job === service);
     if (serviceAlreadyExists) {
-      toast.warning("O serviço já foi adicionado ao carrinho.", {
+      toast.warning("Este serviço já foi adicionado ao carrinho.", {
         position: "top-right",
         autoClose: 3000,
         hideProgressBar: false,
