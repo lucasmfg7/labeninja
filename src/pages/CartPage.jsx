@@ -39,11 +39,17 @@ const ButtonContainer = styled.div`
   }
 `;
 
-export const CartPage = ({ goToServiceListPage, cart }) => {
+export const CartPage = ({ goToServiceListPage, cart, removeFromCart }) => {
   return (
     <Container>
       {cart.length > 0 ? (
-        cart.map((service) => <CartCard key={service.id} service={service} />)
+        cart.map((service) => (
+          <CartCard
+            key={service.id}
+            service={service}
+            removeFromCart={removeFromCart}
+          />
+        ))
       ) : (
         <p>Carrinho Vazio</p>
       )}

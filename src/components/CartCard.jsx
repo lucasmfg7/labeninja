@@ -29,7 +29,7 @@ const Card = styled.div`
   }
 `;
 
-export const CartCard = ({ service }) => {
+export const CartCard = ({ service, removeFromCart }) => {
   return (
     <Card>
       <h3>{service.title}</h3>
@@ -39,7 +39,7 @@ export const CartCard = ({ service }) => {
           currency: "BRL",
         }).format(service.price)}
       </p>
-      <button>Remover</button>
+      <button onClick={() => removeFromCart(service.id)}>Remover</button>
     </Card>
   );
 };

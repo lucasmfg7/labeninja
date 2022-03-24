@@ -26,6 +26,11 @@ const App = () => {
     alert(`O serviço ${service.title} foi adicionado ao carrinho.`);
   }
 
+  function removeFromCart(id) {
+    const newCart = cart.filter((service) => service.id !== id);
+    setCart(newCart);
+  }
+
   function goToDetailPage(jobId) {
     setCurrentScreen("details");
     setJobDetailId(jobId);
@@ -67,7 +72,11 @@ const App = () => {
         return <CreateService setCurrentScreen={setCurrentScreen} />;
       case "cart":
         return (
-          <CartPage cart={cart} goToServiceListPage={goToServiceListPage} />
+          <CartPage
+            cart={cart}
+            removeFromCart={removeFromCart}
+            goToServiceListPage={goToServiceListPage}
+          />
         );
       case "details":
         return (
