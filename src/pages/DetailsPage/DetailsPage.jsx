@@ -4,18 +4,22 @@ import { Container, DetailsContainer } from "./styled";
 
 export const DetailsPage = ({ jobId, goToServiceListPage }) => {
   const [service, setService] = useState([]);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     getJob();
   }, []);
 
   function getJob() {
-    api.get(`/jobs/${jobId}`).then(({ data }) => setService(data));
+    api.get(`/jobs/${jobId}`).then(({ data }) => {
+      setService(data);
+      setLoading(false);
+    });
   }
 
   return (
     <Container>
-      {service ? (
+      {!loading ? (
         <DetailsContainer>
           <h2>{service.title}</h2>
           <p>{service.description}</p>
