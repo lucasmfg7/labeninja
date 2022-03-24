@@ -1,4 +1,6 @@
-![Labeninjas](src/assets/labeninjas.png)
+<h1 align="center">
+<img src="src/assets/labeninjas.png" />
+</h1>
 
 <p align="center">Projeto desenvolvido em React para cadastro e contratação de serviços</p>
 
