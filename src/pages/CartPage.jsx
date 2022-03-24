@@ -39,7 +39,12 @@ const ButtonContainer = styled.div`
   }
 `;
 
-export const CartPage = ({ goToServiceListPage, cart, removeFromCart }) => {
+export const CartPage = ({
+  goToServiceListPage,
+  cart,
+  removeFromCart,
+  clearCart,
+}) => {
   const servicesPrices = cart
     .map((service) => service.price)
     .reduce((acc, number) => {
@@ -68,7 +73,7 @@ export const CartPage = ({ goToServiceListPage, cart, removeFromCart }) => {
         `}
       </h4>
       <ButtonContainer>
-        <button>Finalizar</button>
+        {cart.length > 0 && <button onClick={clearCart}>Finalizar</button>}
         <button onClick={goToServiceListPage}>Voltar</button>
       </ButtonContainer>
     </Container>

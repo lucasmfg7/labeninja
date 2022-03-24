@@ -31,6 +31,12 @@ const App = () => {
     setCart(newCart);
   }
 
+  function clearCart() {
+    setCart([]);
+    alert("Obrigado por comprar conosco.");
+    goToHomePage();
+  }
+
   function goToDetailPage(jobId) {
     setCurrentScreen("details");
     setJobDetailId(jobId);
@@ -76,6 +82,7 @@ const App = () => {
             cart={cart}
             removeFromCart={removeFromCart}
             goToServiceListPage={goToServiceListPage}
+            clearCart={clearCart}
           />
         );
       case "details":
