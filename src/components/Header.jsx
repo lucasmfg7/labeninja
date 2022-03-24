@@ -17,7 +17,7 @@ const Container = styled.div`
   }
 
   button {
-    border: 0;
+    border: 1px solid var(--background);
     padding: 0.5rem 0.75rem;
     border-radius: 0.25rem;
     background: var(--background);
