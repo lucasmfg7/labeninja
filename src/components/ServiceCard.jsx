@@ -37,15 +37,22 @@ const ButtonContainer = styled.div`
   }
 `;
 
-export const ServiceCard = () => {
+export const ServiceCard = ({ service }) => {
+  const { title, price, dueDate } = service;
+
   return (
     <Container>
-      <h4>Título do Serviço</h4>
+      <h4>{title}</h4>
       <p>
-        <strong>Preço: </strong>R$ 12
+        <strong>Preço: </strong>
+        {new Intl.NumberFormat("pt-BR", {
+          style: "currency",
+          currency: "BRL",
+        }).format(price)}
       </p>
       <p>
-        <strong>Prazo: </strong>12/12/2022
+        <strong>Prazo: </strong>
+        {new Intl.DateTimeFormat("pt-BR").format(new Date(dueDate))}
       </p>
       <ButtonContainer>
         <button>Detalhes</button>
