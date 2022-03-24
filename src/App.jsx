@@ -12,6 +12,19 @@ import { GlobalStyle } from "./styles/global";
 const App = () => {
   const [currentScreen, setCurrentScreen] = useState("home");
   const [jobDetailId, setJobDetailId] = useState("");
+  const [cart, setCart] = useState([]);
+
+  function addToCart(service) {
+    const serviceAlreadyExists = cart.some((job) => job === service);
+    if (serviceAlreadyExists) {
+      alert(
+        "O serviço já foi adicionado ao carrinho. Por favor, escolha outro."
+      );
+      return;
+    }
+    setCart([...cart, service]);
+    alert(`O serviço ${service.title} foi adicionado ao carrinho.`);
+  }
 
   function goToDetailPage(jobId) {
     setCurrentScreen("details");
@@ -44,11 +57,18 @@ const App = () => {
           />
         );
       case "list":
-        return <ServiceListPage goToDetailPage={goToDetailPage} />;
+        return (
+          <ServiceListPage
+            addToCart={addToCart}
+            goToDetailPage={goToDetailPage}
+          />
+        );
       case "create":
         return <CreateService setCurrentScreen={setCurrentScreen} />;
       case "cart":
-        return <CartPage />;
+        return (
+          <CartPage cart={cart} goToServiceListPage={goToServiceListPage} />
+        );
       case "details":
         return (
           <DetailsPage

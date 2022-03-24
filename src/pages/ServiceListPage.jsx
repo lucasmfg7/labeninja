@@ -22,7 +22,7 @@ const GridContainer = styled.div`
   gap: 1rem;
 `;
 
-export const ServiceListPage = ({ goToDetailPage }) => {
+export const ServiceListPage = ({ goToDetailPage, addToCart }) => {
   const [serviceList, setServiceList] = useState([]);
 
   useEffect(() => {
@@ -38,6 +38,7 @@ export const ServiceListPage = ({ goToDetailPage }) => {
             key={service.id}
             service={service}
             goToDetailPage={goToDetailPage}
+            addToCart={addToCart}
           />
         ))}
       </GridContainer>

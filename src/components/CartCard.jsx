@@ -10,7 +10,7 @@ const Card = styled.div`
   padding: 1.5rem;
   width: 800px;
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
 
   button {
     border: 1px solid var(--background);
@@ -29,11 +29,16 @@ const Card = styled.div`
   }
 `;
 
-export const CartCard = () => {
+export const CartCard = ({ service }) => {
   return (
     <Card>
-      <h3>Título</h3>
-      <p>Preço</p>
+      <h3>{service.title}</h3>
+      <p>
+        {new Intl.NumberFormat("pt-BR", {
+          style: "currency",
+          currency: "BRL",
+        }).format(service.price)}
+      </p>
       <button>Remover</button>
     </Card>
   );

@@ -39,17 +39,18 @@ const ButtonContainer = styled.div`
   }
 `;
 
-export const CartPage = () => {
+export const CartPage = ({ goToServiceListPage, cart }) => {
   return (
     <Container>
-      <CartCard />
-      <CartCard />
-      <CartCard />
-      <CartCard />
+      {cart.length > 0 ? (
+        cart.map((service) => <CartCard key={service.id} service={service} />)
+      ) : (
+        <p>Carrinho Vazio</p>
+      )}
       <h4>Total: R$100.00</h4>
       <ButtonContainer>
         <button>Finalizar</button>
-        <button>Voltar</button>
+        <button onClick={goToServiceListPage}>Voltar</button>
       </ButtonContainer>
     </Container>
   );

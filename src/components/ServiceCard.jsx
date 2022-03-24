@@ -37,7 +37,7 @@ const ButtonContainer = styled.div`
   }
 `;
 
-export const ServiceCard = ({ service, goToDetailPage }) => {
+export const ServiceCard = ({ service, goToDetailPage, addToCart }) => {
   const { title, price, dueDate, id } = service;
 
   return (
@@ -56,7 +56,7 @@ export const ServiceCard = ({ service, goToDetailPage }) => {
       </p>
       <ButtonContainer>
         <button onClick={() => goToDetailPage(id)}>Detalhes</button>
-        <button>Adicionar</button>
+        <button onClick={() => addToCart(service)}>Adicionar</button>
       </ButtonContainer>
     </Container>
   );
